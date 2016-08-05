@@ -1,0 +1,62 @@
+<%= javascript_include_tag "moment.min" %>
+<%= javascript_include_tag "Chart.min" %>
+
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+$(function(){
+  var data = {
+    labels: [
+      "P1:",
+      "P2:",
+      "P3:",
+      "P4:",
+      "P5:",
+      "P6:",
+      "P7:",
+      "P8:",
+      "P9:",
+      "P10:",
+      "P98:",
+      "P99:"
+    ],
+    FontSize: 32,
+    datasets: [{
+        label: 'a',
+        data: [20, 40, 5, 85, 102, 4, 3, 2, 0, 0, 25, 0],
+        backgroundColor: '#497ec0',
+        borderWidth: 1
+    },
+    {
+        label: 'b',
+        data: [18, 20, 3, 22, 40, 60, 112, 1, 2, 3, 3, 60],
+        backgroundColor: '#cd3c44',
+        borderWidth: 1
+    }]
+  }
+
+  var options = {
+    scaleFontSize: 32,
+    defaultFontColor:'#000071',
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero:true
+            },
+            scaleLabel: {
+                display: true,
+                labelString: "text"
+            }
+        }]
+    }
+  }
+
+  var ctx = $("#myChart").get(0).getContext("2d");
+
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+  });
+});
+</script>
